@@ -1,0 +1,26 @@
+# redis
+alias redis-server="redis-server /usr/local/etc/redis.conf --daemonize yes"
+
+# shortcuts
+alias hosts="sudo vim /etc/hosts"
+
+# nginx
+alias nginx-conf="vim /usr/local/etc/nginx/nginx.conf"
+alias nginx-stop="sudo nginx -s stop"
+alias nginx-start="sudo nginx"
+alias nginx-restart="nginx-stop; nginx-start"
+alias sites-available="cd /usr/local/etc/nginx/sites-available"
+alias sites-enabled="cd /usr/local/etc/nginx/sites-enabled"
+
+# mongodb
+alias mongodb-start="mongod --config /usr/local/etc/mongod.conf"
+
+# bundler
+alias be="bundle exec"
+
+# dotfiles
+alias vimrc="vim ~/.vimrc"
+alias tmuxrc="vim ~/.tmux.conf"
+alias zshrc="vim ~/.zshrc"
+
+alias cgeos="CPATH=/usr/local/Cellar/geos/3.5.0/include LIBRARY_PATH=/usr/local/Cellar/geos/3.5.0/lib"
