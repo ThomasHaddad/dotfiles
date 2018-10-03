@@ -51,8 +51,8 @@ plugins=(zsh-syntax-highlighting colored-man-pages)
 
 # Customize to your needs...
 export GOPATH="$HOME/Go"
-export GOROOT="/usr/local/opt/go/libexec"
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$GOROOT/bin:$GOPATH/bin:$GOPATH/src/github.com/uber/go-torch/FlameGraph:$HOME/.yarn/bin"
+export GOROOT="/usr/local/go/"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$GOROOT/bin:$GOPATH/bin:$GOPATH/src/github.com/uber/go-torch/FlameGraph:$HOME/.yarn/bin::/usr/local/opt/python/libexec/bin:/usr/local/opt/postgresql@9.6/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -62,10 +62,6 @@ source $ZSH/oh-my-zsh.sh
 
 #powerful mv
 autoload -U zmv
-
-# rbenv
-export RBENV_ROOT=/usr/local/var/rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -101,3 +97,27 @@ export DISABLE_AUTO_TITLE='true'
 export ANDROID_HOME=~/Library/Android/sdk
 
 
+
+
+PATH="/Users/thomashaddad/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/thomashaddad/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/thomashaddad/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/thomashaddad/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/thomashaddad/perl5"; export PERL_MM_OPT;
+export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
+
+export RUSTUP_HOME=~/.rustup
+export RUSTROOT=~/.asdf/installs/rust/1.29.0
+export CARGO_HOME=$RUSTROOT/bin
+export PATH=$PATH:$RUSTROOT/bin
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
