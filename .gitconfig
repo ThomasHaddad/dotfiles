@@ -15,8 +15,17 @@
   fa = fetch --all
   pr = pull --rebase
   pa = pull --all
+  branch-name = "!git rev-parse --abbrev-ref HEAD"
+  psu = "!git push -u origin $(git branch-name)"
+  pf = push --force-with-lease
 
   cpk = cherry-pick
+
+  ;delete remote branch
+  brd = push origin --delete ;(branch_name)
+
+  ;clear local branches not on remote
+  gone = "!git branch -vv | grep ' gone]' | awk '{print $1}' | xargs git branch -D"
 
   d = diff
   ds = diff --staged
@@ -93,7 +102,7 @@
   default = tracking
 [user]
   name = Thomas Haddad
-  email = thomas.haddad@af83.com
+  email = shawarma@wttj.co
 
 [core]
   excludesfile = /Users/thomashaddad/.gitignore
@@ -103,3 +112,5 @@
   templatedir = ~/.git-templates
 [commit]
   template = /Users/thomashaddad/.git-commit-template
+[alias]
+  rename = "!moveit() { git branch -m $1 $2; git push origin :$1; git push --set-upstream origin $2; }; moveit"

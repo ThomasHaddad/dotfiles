@@ -117,7 +117,43 @@ export RUSTROOT=~/.asdf/installs/rust/1.29.0
 export CARGO_HOME=$RUSTROOT/bin
 export PATH=$PATH:$RUSTROOT/bin
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
+BASE16_SHELL="$HOME/.base16-manager/chriskempson/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+function link_wttj_cms_shared() {
+  cd /Users/thomashaddad/dev/wttj-cms-shared && yarn link
+  cd /Users/thomashaddad/dev/wk-dashboard-react && yarn link wttj-cms-shared && yarn
+  cd /Users/thomashaddad/dev/wttj-front && yarn link wttj-cms-shared && yarn
+}
+
+function unlink_wttj_cms_shared() {
+  cd /Users/thomashaddad/dev/wk-dashboard-react && yarn unlink wttj-cms-shared
+  cd /Users/thomashaddad/dev/wttj-front && yarn unlink wttj-cms-shared && yarn
+  cd /Users/thomashaddad/dev/wttj-cms-shared && yarn unlink && yarn
+  cd /Users/thomashaddad/dev/wttj-cms-shared
+}
+export GNUPGHOME="bash /usr/local/opt/asdf/keyrings/nodejs"
+
+function pair_ngrok() {
+  ssh -p $2 $1@0.tcp.ngrok.io -i ~/.ssh/id_rsa  -o "UserKnownHostsFile /dev/null"
+}
+
+function get_secret() {
+  if [[ $2 == "parameter" ]]; then
+    aws ssm get-parameter --name $1 --with-decryption --output json | jq -r '.Parameter.Value'
+  else
+    aws ssm get-parameter --name /aws/reference/secretsmanager$1 --with-decryption --output json | jq -r '.Parameter.Value | fromjson | to_entries[] | [.key,.value | tostring] | join("=")'
+  fi
+}
+
+function ssh_jump() {
+  ssh -A -J $1 -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" $2
+}
+
+if test "$SSH_AUTH_SOCK" ; then
+  ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
+fi
+export HOMEBREW_GITHUB_API_TOKEN=09cad8779ee3891d9cca6b4109fcb6a17a40a793
+export CPATH=/Library/Developer/CommandLineTools/usr/include/c++/v1

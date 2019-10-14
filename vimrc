@@ -19,6 +19,7 @@ Plug 'rhysd/vim-crystal'
 Plug 'w0rp/ale'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'stephpy/vim-yaml'
 
 set encoding=utf-8
 
@@ -154,13 +155,14 @@ set softtabstop=2
 
 let base16colorspace=256
 " colorscheme base16-gruvbox-dark-medium
-colorscheme base16-solarized-dark
+" colorscheme base16-solarized-dark
  " colorscheme solarized
+source ~/.vim/colorscheme.vim
 
 " powerline
 set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 set laststatus=2
-set guifont=Monaco\ for\ Powerline
+" set guifont=Monaco\ for\ Powerline
 
 " creates the swapfiles in /tmp
 set dir=/tmp
@@ -187,5 +189,17 @@ let g:go_highlight_build_constraints = 1
 " ALE config
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fixers['yaml'] = ['prettier']
+let g:ale_fixers['elixir'] = ['mix_format']
+let g:ale_fixers['ruby'] = ['rubocop']
+let g:ale_fixers['sh'] = ['shellcheck']
 set re=1
 
+" ale display errors
+highlight ALEWarning ctermbg=16 ctermfg=15
+highlight ALEError ctermbg=1 ctermfg=15
+highlight ALEErrorSign ctermfg=1 ctermbg=1
+highlight ALEWarningSign ctermfg=16 ctermbg=16
+
+" display weird characters
+set listchars=tab:‣\ ,nbsp:␣,eol:¬
