@@ -1,4 +1,4 @@
-call plug#begin('/Users/thomashaddad/.vim/plugged')
+call plug#begin('/home/thomas.haddad/.vim/plugged')
 
 Plug 'chriskempson/base16-vim'
 Plug 'elixir-lang/vim-elixir'
@@ -11,15 +11,14 @@ Plug 'tpope/vim-rhubarb'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'kchmck/vim-coffee-script'
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'tpope/vim-commentary'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'rhysd/vim-crystal'
 Plug 'w0rp/ale'
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'stephpy/vim-yaml'
+Plug 'vimwiki/vimwiki'
 
 set encoding=utf-8
 
@@ -27,7 +26,7 @@ set encoding=utf-8
 call plug#end()
 
 " fzf options
-set rtp+=/usr/local/opt/fzf
+set rtp+=/usr/bin/fzf
 nmap <Leader>b :Buffers<CR>
 nmap <c-p> :GFiles<CR>
 nmap <Leader>t :Tags<CR>
@@ -120,12 +119,12 @@ set list
 " Define characters for 'tabs' and 'end of line'
 set listchars=tab:▸\ ,eol:¬
 
-" Yank text to the OS X clipboard
-noremap <leader>y "*y
-noremap <leader>yy "*Y
+" " Yank text to the OS X clipboard
+" noremap <leader>y "*y
+" noremap <leader>yy "*Y
 
-" Preserve indentation while pasting text from the OS X clipboard
-noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+" " Preserve indentation while pasting text from the OS X clipboard
+" noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 set nocompatible
 
@@ -142,11 +141,7 @@ set autoindent
 set history=1000
 " set cursorline
 
-if has("unnamedplus")
-  set clipboard=unnamedplus
-elseif has("clipboard")
-  set clipboard=unnamed
-endif
+set clipboard=unnamedplus
 
 set expandtab
 set shiftwidth=2
@@ -160,7 +155,14 @@ let base16colorspace=256
 source ~/.vim/colorscheme.vim
 
 " powerline
-set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+" set rtp+=/home/thomas.haddad/local/lib/python3.8/site-packages/powerline/bindings/vim
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+
+set laststatus=2
+
+" let g:airline_powerline_fonts = 1
 set laststatus=2
 " set guifont=Monaco\ for\ Powerline
 
