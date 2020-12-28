@@ -51,8 +51,7 @@ plugins=(zsh-syntax-highlighting colored-man-pages)
 
 # Customize to your needs...
 export GOPATH="$HOME/Go"
-export GOROOT="/usr/local/go/"
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$GOROOT/bin:$GOPATH/bin:$GOPATH/src/github.com/uber/go-torch/FlameGraph:$HOME/.yarn/bin::/usr/local/opt/python/libexec/bin:/usr/local/opt/postgresql@9.6/bin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$GOPATH/bin:$GOPATH/src/github.com/uber/go-torch/FlameGraph:$HOME/.yarn/bin::/usr/local/opt/python/libexec/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
