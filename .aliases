@@ -1,11 +1,15 @@
 # redis
 alias redis-server="redis-server /usr/local/etc/redis.conf --daemonize yes"
 
+#nvim
+alias vi="nvim"
+alias vim="nvim"
+
 # shortcuts
-alias hosts="sudo vim /etc/hosts"
+alias hosts="sudo nvim /etc/hosts"
 
 # nginx
-alias nginx-conf="vim /usr/local/etc/nginx/nginx.conf"
+alias nginx-conf="nvim /usr/local/etc/nginx/nginx.conf"
 alias nginx-stop="sudo nginx -s stop"
 alias nginx-start="sudo nginx"
 alias nginx-restart="nginx-stop; nginx-start"
@@ -23,20 +27,17 @@ alias be="bundle exec"
 alias ls="ls -G --color=auto"
 
 # dotfiles
-alias vimrc="vim ~/.vimrc"
-alias kittyrc="vim ~/.config/kitty/kitty.conf"
+alias vimrc="nvim ~/.config/nvim/init.vim"
 alias nvimrc="nvim ~/.config/nvim/init.vim"
-alias tmuxrc="vim ~/.tmux.conf"
-alias zshrc="vim ~/.zshrc"
-alias sshrc="vim ~/.ssh/config"
+alias tmuxrc="nvim ~/.tmux.conf"
+alias zshrc="nvim ~/.zshrc"
+alias sshrc="nvim ~/.ssh/config"
+alias aliases="nvim ~/.aliases"
 
 alias cgeos="CPATH=/usr/local/Cellar/geos/3.5.0/include LIBRARY_PATH=/usr/local/Cellar/geos/3.5.0/lib"
 
 alias ps-stop="pkill postgres"
-alias ps3-start="/usr/local/opt/postgresql@9.3/bin/pg_ctl -D /usr/local/var/postgres@9.3 -l /usr/local/var/postgres@9.3/server.log start"
-alias ps4-start="/usr/local/opt/postgresql@9.4/bin/pg_ctl -D /usr/local/var/postgres@9.4 -l /usr/local/var/postgres@9.4/server.log start"
-alias ps-start="/usr/local/opt/postgresql@9.6/bin/pg_ctl -D /usr/local/var/postgresql@9.6 -l /usr/local/var/postgresql@9.6/server.log start"
-
+alias ps-start="/home/thomas.haddad/.asdf/installs/postgres/12.3/bin/pg_ctl -D /home/thomas.haddad/.asdf/installs/postgres/12.3/data -l logfile start"
 
 #AWS CLI
 alias aws-list-instances="aws ec2 describe-instances --query \"Reservations[*].Instances[0].{ID:InstanceId, ZONE:Placement.AvailabilityZone, STATE:State.Name, DNS:PrivateDnsName, TYPE:InstanceType, PRIVATEIP:PrivateIpAddress, PUBLICIP:PublicIpAddress, NAME:Tags[?Key=='Name'].Value|[0], CREATION:LaunchTime}\" --output table"
